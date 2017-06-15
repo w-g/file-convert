@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileConvert", "FileConvert\FileConvert.csproj", "{3937DEDC-590F-4295-B59E-5C35F6C2EE81}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{071F1C03-2DE0-4C77-892F-EE37A64C79E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileConvert.Tests", "Test\FileConvert.Tests\FileConvert.Tests.csproj", "{787BB743-DD35-4CC6-92BE-7E3466C14CCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +19,15 @@ Global
 		{3937DEDC-590F-4295-B59E-5C35F6C2EE81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3937DEDC-590F-4295-B59E-5C35F6C2EE81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3937DEDC-590F-4295-B59E-5C35F6C2EE81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{787BB743-DD35-4CC6-92BE-7E3466C14CCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{787BB743-DD35-4CC6-92BE-7E3466C14CCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{787BB743-DD35-4CC6-92BE-7E3466C14CCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{787BB743-DD35-4CC6-92BE-7E3466C14CCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{787BB743-DD35-4CC6-92BE-7E3466C14CCF} = {071F1C03-2DE0-4C77-892F-EE37A64C79E9}
 	EndGlobalSection
 EndGlobal
