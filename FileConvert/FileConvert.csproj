@@ -31,13 +31,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aspose.Cells">
-      <HintPath>..\packages\Aspose.Cells.7.7.2.0\lib\net3.5\Aspose.Cells.dll</HintPath>
+      <HintPath>..\lib\Aspose.Cells.7.7.2.0\lib\net3.5\Aspose.Cells.dll</HintPath>
     </Reference>
     <Reference Include="Aspose.Slides">
-      <HintPath>..\packages\Aspose.Slides.8.4.0.0\lib\net40\Aspose.Slides.dll</HintPath>
+      <HintPath>..\lib\Aspose.Slides.8.4.0.0\lib\net40\Aspose.Slides.dll</HintPath>
     </Reference>
     <Reference Include="Aspose.Words">
-      <HintPath>..\packages\Aspose.Words.15.1.0.0\lib\net2.0\Aspose.Words.dll</HintPath>
+      <HintPath>..\lib\Aspose.Words.15.1.0.0\lib\net2.0\Aspose.Words.dll</HintPath>
     </Reference>
     <Reference Include="Common.Logging, Version=3.3.1.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.3.3.1\lib\net40\Common.Logging.dll</HintPath>
