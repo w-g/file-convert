@@ -48,31 +48,32 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HtmlConverter\PdfHtmlConverterTest.cs" />
     <Compile Include="HtmlConverter\HtmlConvertDirectorTest.cs" />
     <Compile Include="PdfConverter\PdfConvertDirectorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="TestFiles\Uploads\Lucene与全文检索.ppt">
+    <None Include="TestFiles\Uploads\F5E1D185-A97D-40E6-8CAF-4873714B241E.ppt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestFiles\Uploads\Lucene与全文检索.pptx">
+    <None Include="TestFiles\Uploads\F5E1D185-A97D-40E6-8CAF-4873714B241E.pptx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestFiles\Uploads\开发计划.xls">
+    <None Include="TestFiles\Uploads\208A3214-3BA6-4CEC-8A0A-F707FBF8E58F.xls">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestFiles\Uploads\开发计划.xlsx">
+    <None Include="TestFiles\Uploads\208A3214-3BA6-4CEC-8A0A-F707FBF8E58F.xlsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestFiles\Uploads\我的简历.pdf">
+    <None Include="TestFiles\Uploads\0979BF52-E3D7-4199-AEC4-3E538C8A64A3.doc">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestFiles\Uploads\易化360工作移交.doc">
+    <None Include="TestFiles\Uploads\0979BF52-E3D7-4199-AEC4-3E538C8A64A3.docx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="TestFiles\Uploads\易化360工作移交.docx">
+    <None Include="TestFiles\Uploads\6A962133-5C21-4B26-9183-82C72481C330.pdf">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
@@ -84,7 +85,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TestFiles\Uploads\LICENSE.txt">
+    <Content Include="TestFiles\Uploads\46164C79-5EB9-468A-9C1F-83490C47E21E.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

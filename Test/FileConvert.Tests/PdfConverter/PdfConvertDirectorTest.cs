@@ -15,7 +15,7 @@ namespace FileConvert.Tests
         [TestMethod]
         public void TestAddFile()
         {
-            FileConvertDirector<PdfConverter>.AddConvertingFile(new ConvertingFile(_basePath + "LICENSE.txt"));
+            FileConvertDirector<PdfConverter>.AddConvertingFile(new ConvertingFile(_basePath + "46164C79-5EB9-468A-9C1F-83490C47E21E.txt"));
 
             // 无异常即通过
             Assert.AreEqual(1, 1);
@@ -25,14 +25,14 @@ namespace FileConvert.Tests
         public void TestAddFiles()
         {
             ConvertingFile[] convertingFiles = {
-                    new ConvertingFile(_basePath + "LICENSE.txt"),
-                    new ConvertingFile(_basePath + "Lucene与全文检索.ppt"),
-                    new ConvertingFile(_basePath + "Lucene与全文检索.pptx"),
-                    new ConvertingFile(_basePath + "开发计划.xls"),
-                    new ConvertingFile(_basePath + "开发计划.xlsx"),
-                    new ConvertingFile(_basePath + "我的简历.pdf"),
-                    new ConvertingFile(_basePath + "易化360工作移交.doc"),
-                    new ConvertingFile(_basePath + "易化360工作移交.docx")
+                    new ConvertingFile(_basePath + "46164C79-5EB9-468A-9C1F-83490C47E21E.txt"),
+                    new ConvertingFile(_basePath + "F5E1D185-A97D-40E6-8CAF-4873714B241E.ppt"),
+                    new ConvertingFile(_basePath + "F5E1D185-A97D-40E6-8CAF-4873714B241E.pptx"),
+                    new ConvertingFile(_basePath + "208A3214-3BA6-4CEC-8A0A-F707FBF8E58F.xls"),
+                    new ConvertingFile(_basePath + "208A3214-3BA6-4CEC-8A0A-F707FBF8E58F.xlsx"),
+                    new ConvertingFile(_basePath + "6A962133-5C21-4B26-9183-82C72481C330.pdf"),
+                    new ConvertingFile(_basePath + "0979BF52-E3D7-4199-AEC4-3E538C8A64A3.doc"),
+                    new ConvertingFile(_basePath + "0979BF52-E3D7-4199-AEC4-3E538C8A64A3.docx")
             };
 
             FileConvertDirector<PdfConverter>.AddConvertingFiles(convertingFiles);
@@ -44,14 +44,14 @@ namespace FileConvert.Tests
         public void TestRunAndOnConvertFinished()
         {
             ConvertingFile[] convertingFiles = {
-                    new ConvertingFile(_basePath + "LICENSE.txt"),
-                    new ConvertingFile(_basePath + "Lucene与全文检索.ppt"),
-                    new ConvertingFile(_basePath + "Lucene与全文检索.pptx"),
-                    new ConvertingFile(_basePath + "开发计划.xls"),
-                    new ConvertingFile(_basePath + "开发计划.xlsx"),
-                    new ConvertingFile(_basePath + "我的简历.pdf"),
-                    new ConvertingFile(_basePath + "易化360工作移交.doc"),
-                    new ConvertingFile(_basePath + "易化360工作移交.docx")
+                    new ConvertingFile(_basePath + "46164C79-5EB9-468A-9C1F-83490C47E21E.txt"),
+                    new ConvertingFile(_basePath + "F5E1D185-A97D-40E6-8CAF-4873714B241E.ppt"),
+                    new ConvertingFile(_basePath + "F5E1D185-A97D-40E6-8CAF-4873714B241E.pptx"),
+                    new ConvertingFile(_basePath + "208A3214-3BA6-4CEC-8A0A-F707FBF8E58F.xls"),
+                    new ConvertingFile(_basePath + "208A3214-3BA6-4CEC-8A0A-F707FBF8E58F.xlsx"),
+                    new ConvertingFile(_basePath + "6A962133-5C21-4B26-9183-82C72481C330.pdf"),
+                    new ConvertingFile(_basePath + "0979BF52-E3D7-4199-AEC4-3E538C8A64A3.doc"),
+                    new ConvertingFile(_basePath + "0979BF52-E3D7-4199-AEC4-3E538C8A64A3.docx")
             };
 
             var successCount = 0;

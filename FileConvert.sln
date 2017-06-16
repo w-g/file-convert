@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{071F1C03-2
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileConvert.Tests", "Test\FileConvert.Tests\FileConvert.Tests.csproj", "{787BB743-DD35-4CC6-92BE-7E3466C14CCF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleApp", "SampleApp\SampleApp.csproj", "{BCB42265-BEAC-40C0-A00C-E88752F3B844}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,6 +25,10 @@ Global
 		{787BB743-DD35-4CC6-92BE-7E3466C14CCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{787BB743-DD35-4CC6-92BE-7E3466C14CCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{787BB743-DD35-4CC6-92BE-7E3466C14CCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCB42265-BEAC-40C0-A00C-E88752F3B844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCB42265-BEAC-40C0-A00C-E88752F3B844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCB42265-BEAC-40C0-A00C-E88752F3B844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCB42265-BEAC-40C0-A00C-E88752F3B844}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

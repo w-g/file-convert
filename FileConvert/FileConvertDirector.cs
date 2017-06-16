@@ -1,6 +1,7 @@
 ﻿using Common.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace V4TOR.FileConvert
     /// <summary>
     /// 文件格式转换的Director类
     /// </summary>
-    public static class FileConvertDirector<TConverter> where TConverter : class, IFileConverter
+    public class FileConvertDirector<TConverter> where TConverter : class, IFileConverter
     {
         ///// <summary>
         ///// 受保护的构造函数
@@ -52,7 +53,7 @@ namespace V4TOR.FileConvert
             if (Converters == null)
             {
                 var converterTypes = AppDomain.CurrentDomain.GetAssemblies()
-                    .SelectMany(a => a.GetTypes().Where(t => t.GetInterfaces().Contains(typeof(IFileConverter)) && t.IsClass && !t.IsAbstract));
+                    .SelectMany(a => a.GetTypes().Where(t => typeof(TConverter).IsAssignableFrom(t) && !t.IsAbstract));
 
                 if (!converterTypes.Any())
                 {
@@ -68,7 +69,7 @@ namespace V4TOR.FileConvert
         /// <summary>
         /// 待转文件队列
         /// </summary>
-        private static Queue<ConvertingFile> ConvertingFileQueue = new Queue<ConvertingFile>();
+        public static Queue<ConvertingFile> ConvertingFileQueue = new Queue<ConvertingFile>();
 
         /// <summary>
         /// 增加待转文件
@@ -76,6 +77,13 @@ namespace V4TOR.FileConvert
         /// <param name="convertingFile">待转文件</param>
         public static void AddConvertingFile(ConvertingFile convertingFile)
         {
+            convertingFile.FilePath = convertingFile.FilePath.Replace('/', '\\');
+
+            if (!string.IsNullOrWhiteSpace(convertingFile.OutputPath))
+            {
+                convertingFile.OutputPath = convertingFile.OutputPath.Replace('/', '\\');
+            }
+
             ConvertingFileQueue.Enqueue(convertingFile);
         }
 
@@ -90,6 +98,11 @@ namespace V4TOR.FileConvert
                 AddConvertingFile(convertingFile);
             }
         }
+
+        /// <summary>
+        /// 转换后文件的输出目录
+        /// </summary>
+        public static string OutputPath { get; set; }
 
         /// <summary>
         /// 每个文件转换完成后发生
@@ -126,13 +139,29 @@ namespace V4TOR.FileConvert
                     if (string.IsNullOrWhiteSpace(convertingFile.OutputPath))
                     {
                         // 缺省转换后的文件输出路径
-                        convertingFile.OutputPath = convertingFile.FilePath.Substring(0, convertingFile.FilePath.LastIndexOf('.'));
-                        if (!string.IsNullOrWhiteSpace(converter.TargetFileExtName))
+                        if (string.IsNullOrWhiteSpace(OutputPath))
                         {
-                            convertingFile.OutputPath += "." + converter.TargetFileExtName;
+                            // 输出至当前目录
+                            convertingFile.OutputPath = Path.Combine(Path.GetDirectoryName(convertingFile.FilePath),
+                                Path.GetFileNameWithoutExtension(convertingFile.FilePath));
+
+                            if (!string.IsNullOrWhiteSpace(converter.TargetFileExtName))
+                            {
+                                convertingFile.OutputPath += "." + converter.TargetFileExtName;
+                            }
+                        }
+                        else
+                        {
+                            // 输出至配置目录
+                            convertingFile.OutputPath = Path.Combine(OutputPath, Path.GetFileNameWithoutExtension(convertingFile.FilePath));
+                            if (!string.IsNullOrWhiteSpace(converter.TargetFileExtName))
+                            {
+                                convertingFile.OutputPath += "." + converter.TargetFileExtName;
+                            }
                         }
                     }
 
+                    convertingFile.OutputPath = convertingFile.OutputPath.Replace('/', '\\');
                     convertingFile.Converter = converter;
                     convertingFile.Convert();
 
