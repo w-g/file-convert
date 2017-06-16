@@ -7,10 +7,11 @@
     <ProjectGuid>{3937DEDC-590F-4295-B59E-5C35F6C2EE81}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>FileConvert</RootNamespace>
-    <AssemblyName>FileConvert</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <RootNamespace>V4TOR.FileConvert</RootNamespace>
+    <AssemblyName>V4TOR.FileConvert</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -73,24 +74,56 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="HtmlConverter\pdf2htmlEX\data\base.css" />
-    <Content Include="HtmlConverter\pdf2htmlEX\data\base.min.css" />
-    <Content Include="HtmlConverter\pdf2htmlEX\data\compatibility.min.js" />
-    <Content Include="HtmlConverter\pdf2htmlEX\data\fancy.css" />
-    <Content Include="HtmlConverter\pdf2htmlEX\data\fancy.min.css" />
-    <Content Include="HtmlConverter\pdf2htmlEX\data\pdf2htmlEX-64x64.png" />
-    <Content Include="HtmlConverter\pdf2htmlEX\data\pdf2htmlEX.js" />
-    <Content Include="HtmlConverter\pdf2htmlEX\data\pdf2htmlEX.min.js" />
-    <Content Include="HtmlConverter\pdf2htmlEX\pdf2htmlEX.exe" />
+    <Content Include="HtmlConverter\pdf2htmlEX\data\base.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HtmlConverter\pdf2htmlEX\data\base.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HtmlConverter\pdf2htmlEX\data\compatibility.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HtmlConverter\pdf2htmlEX\data\fancy.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HtmlConverter\pdf2htmlEX\data\fancy.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HtmlConverter\pdf2htmlEX\data\pdf2htmlEX-64x64.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HtmlConverter\pdf2htmlEX\data\pdf2htmlEX.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HtmlConverter\pdf2htmlEX\data\pdf2htmlEX.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HtmlConverter\pdf2htmlEX\pdf2htmlEX.exe">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="HtmlConverter\pdf2htmlEX\data\base.css.in" />
-    <None Include="HtmlConverter\pdf2htmlEX\data\build_css.sh" />
-    <None Include="HtmlConverter\pdf2htmlEX\data\build_js.sh" />
-    <None Include="HtmlConverter\pdf2htmlEX\data\fancy.css.in" />
-    <None Include="HtmlConverter\pdf2htmlEX\data\LICENSE" />
-    <None Include="HtmlConverter\pdf2htmlEX\data\manifest" />
-    <None Include="HtmlConverter\pdf2htmlEX\data\pdf2htmlEX.js.in" />
+    <None Include="HtmlConverter\pdf2htmlEX\data\base.css.in">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="HtmlConverter\pdf2htmlEX\data\build_css.sh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="HtmlConverter\pdf2htmlEX\data\build_js.sh">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="HtmlConverter\pdf2htmlEX\data\fancy.css.in">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="HtmlConverter\pdf2htmlEX\data\LICENSE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="HtmlConverter\pdf2htmlEX\data\manifest">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="HtmlConverter\pdf2htmlEX\data\pdf2htmlEX.js.in">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

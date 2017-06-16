@@ -10,49 +10,49 @@ namespace V4TOR.FileConvert
     /// <summary>
     /// 文件格式转换的Director类
     /// </summary>
-    public class FileConvertDirector<TConverter> where TConverter : class, IFileConverter
+    public static class FileConvertDirector<TConverter> where TConverter : class, IFileConverter
     {
-        /// <summary>
-        /// 受保护的构造函数
-        /// </summary>
-        protected FileConvertDirector()
-        { }
+        ///// <summary>
+        ///// 受保护的构造函数
+        ///// </summary>
+        //protected FileConvertDirector()
+        //{ }
 
-        /// <summary>
-        /// Singleton
-        /// </summary>
-        private static FileConvertDirector<TConverter> _instance = new FileConvertDirector<TConverter>();
+        ///// <summary>
+        ///// Singleton
+        ///// </summary>
+        //private static FileConvertDirector<TConverter> _instance = new FileConvertDirector<TConverter>();
 
-        /// <summary>
-        /// 获取唯一实例的方法
-        /// </summary>
-        /// <returns>唯一的实例</returns>
-        public static FileConvertDirector<TConverter> Instance()
-        {
-            return _instance;
-        }
+        ///// <summary>
+        ///// 获取唯一实例的方法
+        ///// </summary>
+        ///// <returns>唯一的实例</returns>
+        //public static FileConvertDirector<TConverter> Instance()
+        //{
+        //    return _instance;
+        //}
 
         /// <summary>
         /// Logger
         /// </summary>
-        protected ILog Logger = LogManager.GetLogger(typeof(FileConvertDirector<TConverter>));
+        private static ILog Logger = LogManager.GetLogger(typeof(FileConvertDirector<TConverter>));
 
         /// <summary>
         /// 所有可用的文件格式转换器
         /// </summary>
-        protected IEnumerable<TConverter> Converters { get; set; }
+        private static IEnumerable<TConverter> Converters { get; set; }
 
         /// <summary>
         /// 获取指定文件扩展名的文件格式转换器
         /// </summary>
         /// <param name="fileExtName">文件扩展名</param>
         /// <returns>指定文件扩展名的文件格式转换器</returns>
-        protected TConverter GetConverter(string fileExtName)
+        private static TConverter GetConverter(string fileExtName)
         {
             if (Converters == null)
             {
                 var converterTypes = AppDomain.CurrentDomain.GetAssemblies()
-                    .SelectMany(a => a.GetTypes().Where(t => t.GetInterfaces().Contains(typeof(IFileConverter))));
+                    .SelectMany(a => a.GetTypes().Where(t => t.GetInterfaces().Contains(typeof(IFileConverter)) && t.IsClass && !t.IsAbstract));
 
                 if (!converterTypes.Any())
                 {
@@ -62,19 +62,19 @@ namespace V4TOR.FileConvert
                 Converters = converterTypes.Select(t => AppDomain.CurrentDomain.CreateInstanceAndUnwrap(t.Assembly.FullName, t.FullName) as TConverter);
             }
 
-            return Converters.FirstOrDefault(c => c.SourceFileExtName == fileExtName);
+            return Converters.FirstOrDefault(c => c != null && c.SourceFileExtName == fileExtName);
         }
 
         /// <summary>
         /// 待转文件队列
         /// </summary>
-        protected Queue<ConvertingFile> ConvertingFileQueue = new Queue<ConvertingFile>();
+        private static Queue<ConvertingFile> ConvertingFileQueue = new Queue<ConvertingFile>();
 
         /// <summary>
         /// 增加待转文件
         /// </summary>
         /// <param name="convertingFile">待转文件</param>
-        public void AddConvertingFile(ConvertingFile convertingFile)
+        public static void AddConvertingFile(ConvertingFile convertingFile)
         {
             ConvertingFileQueue.Enqueue(convertingFile);
         }
@@ -83,7 +83,7 @@ namespace V4TOR.FileConvert
         /// 增加多个待转文件
         /// </summary>
         /// <param name="convertingFiles">待转文件列表</param>
-        public void AddConvertingFiles(IEnumerable<ConvertingFile> convertingFiles)
+        public static void AddConvertingFiles(IEnumerable<ConvertingFile> convertingFiles)
         {
             foreach (var convertingFile in convertingFiles)
             {
@@ -94,13 +94,13 @@ namespace V4TOR.FileConvert
         /// <summary>
         /// 每个文件转换完成后发生
         /// </summary>
-        public event EventHandler OnConvertFinished;
+        public static event EventHandler OnConvertFinished;
 
         /// <summary>
         /// 开始文件转换任务
         /// </summary>
         /// <returns></returns>
-        public Task Run()
+        public static Task Run()
         {
             return Task.Run(() =>
             {

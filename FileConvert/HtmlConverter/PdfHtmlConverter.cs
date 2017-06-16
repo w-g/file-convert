@@ -30,6 +30,7 @@ namespace V4TOR.FileConvert
 
             var processStartInfo = new ProcessStartInfo(pdf2htmlEXPath, pdf2htmlEXArgs);
             processStartInfo.CreateNoWindow = true;
+            processStartInfo.UseShellExecute = false;
 
             Process.Start(processStartInfo);
 
