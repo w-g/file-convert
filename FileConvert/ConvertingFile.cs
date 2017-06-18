@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Common.Logging;
+using System;
 
 namespace V4TOR.FileConvert
 {
@@ -7,6 +8,17 @@ namespace V4TOR.FileConvert
     /// </summary>
     public class ConvertingFile
     {
+        /// <summary>
+        /// Logger
+        /// </summary>
+        private ILog Logger
+        {
+            get
+            {
+                return LogManager.GetLogger(GetType());
+            }
+        }
+
         /// <summary>
         /// 构造函数
         /// </summary>
@@ -48,7 +60,17 @@ namespace V4TOR.FileConvert
 
             if (OnFileConvertFinished != null)
             {
-                OnFileConvertFinished.BeginInvoke(this, null, null, null);
+                foreach (EventHandler invocation in OnFileConvertFinished.GetInvocationList())
+                {
+                    try
+                    {
+                        invocation.BeginInvoke(this, null, null, null);
+                    }
+                    catch (Exception ecp)
+                    {
+                        Logger.Error("error when call OnFileConvertFinished:" + ecp.Message);
+                    }
+                }
             }
         }
     }

@@ -39,10 +39,17 @@ namespace V4TOR.FileConvert
             sourceFilePath = sourceFilePath.Replace('/', '\\');
             targetFilePath = targetFilePath.Replace('/', '\\');
 
+            // 预创建目标目录
+            var targetDir = Path.GetDirectoryName(targetFilePath);
+            if (!Directory.Exists(targetDir))
+            {
+                Directory.CreateDirectory(targetDir);
+            }
+
             using (var process = new Process())
             {
                 process.StartInfo.FileName = Pdf2htmlEXPath;
-                process.StartInfo.Arguments = string.Format("--embed cfijO --first-page 1 --last-page 100 --fit-width 1800 --font-size-multiplier 1 --split-pages 1 --dest-dir {0} --page-filename page-%d.html {1}", targetFilePath, sourceFilePath);
+                process.StartInfo.Arguments = string.Format("--embed cfijO --first-page 1 --last-page 100 --split-pages 1 --page-filename page-%d.html --dest-dir {0} {1}", targetFilePath, sourceFilePath);
 
                 process.StartInfo.UseShellExecute = false;
                 process.StartInfo.CreateNoWindow = true;
@@ -62,7 +69,7 @@ namespace V4TOR.FileConvert
                 process.Start();
                 process.BeginOutputReadLine();
                 process.BeginErrorReadLine();
-                if (process.WaitForExit(20000))
+                if (!process.WaitForExit(20000))
                 {
                     // 20秒内转换工作未完成被强制退出
                     Logger.Error(string.Format("{0} takes too long time", sourceFilePath));

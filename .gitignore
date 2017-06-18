@@ -5,7 +5,6 @@
 *.suo
 *.user
 packages/
-!packages/Aspose*/
 
 # Build results
 

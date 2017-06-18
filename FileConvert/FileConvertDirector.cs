@@ -36,7 +36,13 @@ namespace V4TOR.FileConvert
         /// <summary>
         /// Logger
         /// </summary>
-        private static ILog Logger = LogManager.GetLogger(typeof(FileConvertDirector<TConverter>));
+        private static ILog Logger
+        {
+            get
+            {
+                return LogManager.GetLogger(typeof(FileConvertDirector<TConverter>));
+            }
+        }
 
         /// <summary>
         /// 所有可用的文件格式转换器
@@ -69,7 +75,7 @@ namespace V4TOR.FileConvert
         /// <summary>
         /// 待转文件队列
         /// </summary>
-        public static Queue<ConvertingFile> ConvertingFileQueue = new Queue<ConvertingFile>();
+        private static Queue<ConvertingFile> ConvertingFileQueue = new Queue<ConvertingFile>();
 
         /// <summary>
         /// 增加待转文件
@@ -167,7 +173,18 @@ namespace V4TOR.FileConvert
 
                     if (OnConvertFinished != null)
                     {
-                        OnConvertFinished.Invoke(convertingFile, null);
+                        foreach (EventHandler invocation in OnConvertFinished.GetInvocationList())
+                        {
+                            try
+                            {
+                                invocation.BeginInvoke(convertingFile, null, null, null);
+                            }
+                            catch(Exception ecp)
+                            {
+                                Logger.Error("error when call OnConvertFinished:" + ecp.Message);
+                            }
+                        }
+
                     }
                 }
             });
