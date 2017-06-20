@@ -64,7 +64,7 @@ namespace V4TOR.FileConvert
                 {
                     try
                     {
-                        invocation.BeginInvoke(this, null, null, null);
+                        invocation.Invoke(this, null);
                     }
                     catch (Exception ecp)
                     {

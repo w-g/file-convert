@@ -177,7 +177,7 @@ namespace V4TOR.FileConvert
                         {
                             try
                             {
-                                invocation.BeginInvoke(convertingFile, null, null, null);
+                                invocation.Invoke(convertingFile, null);
                             }
                             catch(Exception ecp)
                             {
